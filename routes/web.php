@@ -35,6 +35,6 @@ Route::group(['prefix' => 'tuts', 'middleware' => 'auth'], function(){
 Route::group(['prefix' => 'prep', 'middleware' => 'auth'], function(){
     Route::get('/', 'PrepController@index')->name('prep.index');
     Route::get('/search', 'PrepController@search')->name('prep.search');
-    Route::get('/mypreps', 'MyPrepController@mytuts')->name('mypreps');
+    Route::get('/mypreps', 'MyPrepController@mypreps')->name('mypreps');
     Route::get('/prep-class', 'MyPrepController@class')->name('prep.class');
 });
