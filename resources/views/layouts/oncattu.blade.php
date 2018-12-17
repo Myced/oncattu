@@ -13,7 +13,6 @@
 
         <!-- Include styles  -->
         @include('includes.style')
-        @yield('styles')
 
     </head>
     <body>

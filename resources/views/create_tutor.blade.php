@@ -3,8 +3,8 @@
 @section('content')
 <br>
 <div class="jumbotron page-jumbo bg-primary">
-        	<h2>Oncatu > Sign up</h2>
-		</div>
+	<h2>Oncatu > Sign up</h2>
+</div>
 	<br>
 	<h2 class="text-center"><b>Create Your Tutor Account</b></h2>
 
