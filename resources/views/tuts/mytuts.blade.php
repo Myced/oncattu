@@ -16,19 +16,44 @@
     <div class="container container-padding bg-grey">
     <div class="row">
         <div class="col-sm-4 user-info">
-            <p>Name: <span class="user-value"><u>Mangi Elijah Nchimehnyi</u></span></p>
-            <p>Gender: <span class="user-value"><u>Male</span></u></p>
-            <p>Location: <span class="user-value"><u>Dirty South Buea</u></span></p>
+            <p>Name: <span class="user-value"><u> {{ auth()->user()->name }} </u></span></p>
+            <p>Gender: <span class="user-value"><u>
+                @if(auth()->user()->sex == 'M')
+                    {{ __('Male') }}
+                @else
+                    {{ __('Female') }}
+                @endif
+            </span></u></p>
+            <p>Location: <span class="user-value"><u>
+                {{ auth()->user()->location }}
+            </u></span></p>
         </div>
 
         <div class="col-sm-4 user-info">
-            <p>Contact: <span class="user-value"><u>+237 672 084 140</u></span></p>
-            <p>Email: <span class="user-value"><u>mangielijah8@gmail.com</span></u></p>
-            <!--<p>Location: <span class="user-value"><u>Dirty South Buea</u></span></p>-->
+            <p>Contact:
+                <span class="user-value">
+                    <u>
+                        {{ auth()->user()->tel1 }}
+
+                        @if(auth()->user()->tel2 != '')
+                            {{ __(' / ') }}
+                            {{ auth()->user()->tel2 }}
+                        @endif
+                    </u>
+                </span>
+            </p>
+            <p>Email:
+                <span class="user-value">
+                    <u> {{ auth()->user()->email }} </u>
+                </span>
+            </p>
+
+
+            <!--<p>Location: <span class="user-v</span>alue"><u>Dirty South Buea</u></span></p>-->
         </div>
 
         <div class="col-sm-4">
-            <img src="../images/profile_image.jpg" alt="profile image" height="240" class="img-circle">
+            <img src="/{{ auth()->user()->avatar }}" alt="profile image" height="240" class="img-circle">
         </div>
     </div>
     </div>
@@ -46,7 +71,7 @@
       <tr>
         <td>Hibmat Level 100 Management</td>
         <td>Mayong Egbe</td>
-        <td><a href="/oncatu/oncatu-tuts/board" class="btn btn-primary">Go to class</a></td>
+        <td><a href="{{ route('class') }}" class="btn btn-primary">Go to class</a></td>
       </tr>
       <tr>
         <td>Hibmat Level 100 Management</td>

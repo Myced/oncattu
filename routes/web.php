@@ -18,6 +18,7 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 
 
 //route for tutorials section
+
 Route::group(['prefix' => 'tuts'], function(){
     Route::get('/', 'TutsController@index')->name('tuts.index');
     Route::get('/search', 'TutsController@search')->name('tuts.search');
@@ -47,4 +48,17 @@ Route::group(['prefix' => 'tutor'], function(){
     Route::get('/', 'TutorController@index')->name('tutor.index');
     Route::get('/upload/book', 'TutorUploadController@createBook')->name('book.upload');
     Route::post('/upload/book/store', 'TutorUploadController@storeBook')->name('book.store');
+
+Route::group(['prefix' => 'tuts', 'middleware' => 'auth'], function(){
+    Route::get('/', 'TutsController@index')->name('tuts.index');
+    Route::get('/search', 'TutsController@search')->name('tuts.search');
+    Route::get('/mytutorials', 'MyTutsController@mytuts')->name('mytuts');
+    Route::get('/class', 'MyTutsController@class')->name('class');
+});
+
+Route::group(['prefix' => 'prep', 'middleware' => 'auth'], function(){
+    Route::get('/', 'PrepController@index')->name('prep.index');
+    Route::get('/search', 'PrepController@search')->name('prep.search');
+    Route::get('/mypreps', 'MyPrepController@mypreps')->name('mypreps');
+    Route::get('/prep-class', 'MyPrepController@class')->name('prep.class');
 });

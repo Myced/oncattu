@@ -6,5 +6,8 @@
 <!-- //styles  -->
 <link rel="stylesheet" href="/css/fontawesome/css/fontawesome-all.min.css" >
 <link rel="stylesheet" href="/css/bootstrap.css">
+<<<<<<< HEAD
 @yield('styles')
+=======
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
 <link rel="stylesheet" href="/css/style.css">

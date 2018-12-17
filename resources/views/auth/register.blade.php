@@ -66,7 +66,11 @@
         	<div class="form-group">
         		<div class="col-sm-12">
         		<input type="text" class="form-control" name="name" placeholder="Enter Names *"
+<<<<<<< HEAD
                     required>
+=======
+                    required value="{{ old('name') }}">
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
         		</div>
         	</div>
         	<div class="form-inline">
@@ -82,24 +86,42 @@
           </div>
           <div class="form-group">
         		<div class="col-sm-12">
+<<<<<<< HEAD
         		<input type="text" class="form-control"  name="location" placeholder="Location">
+=======
+        		<input type="text" class="form-control"  name="location"
+                placeholder="Location" value="{{ old('location') }}">
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
         		</div>
         	</div>
           <div class="form-group">
         		<div class="col-sm-12">
         		<input type="text" class="form-control"  name="tel1" placeholder="1st contact *"
+<<<<<<< HEAD
                     required>
+=======
+                    required value="{{ old('tel1') }}">
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
         		</div>
         	</div>
           <div class="form-group">
         		<div class="col-sm-12">
+<<<<<<< HEAD
         		<input type="text" class="form-control" name="tel2" placeholder="2nd contact">
+=======
+        		<input type="text" class="form-control" name="tel2"
+                placeholder="2nd contact" value="{{ old('tel2') }}">
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
         		</div>
         	</div>
           <div class="form-group">
         		<div class="col-sm-12">
         		<input type="email" class="form-control" name="email" placeholder="E-mail *"
+<<<<<<< HEAD
                 required>
+=======
+                    required value="{{ old('email') }}">
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
         		</div>
         	</div>
         </div>
@@ -109,19 +131,32 @@
         	<div class="form-group">
         		<div class="col-sm-12">
         			<input type="text" class="form-control" id="username" name="username"
+<<<<<<< HEAD
                     placeholder="User Name" required>
+=======
+                    placeholder="User Name" required value="{{ old('username') }}">
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
         		</div>
         	</div>
         	<div class="form-group">
         		<div class="col-sm-12">
         			<input type="password" class="form-control" id="pwd" name="password"
+<<<<<<< HEAD
                     placeholder="Password" required>
+=======
+                    placeholder="Password" required value="{{ old('password') }}">
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
         		</div>
         	</div>
         	<div class="form-group">
         		<div class="col-sm-12">
         			<input type="password" class="form-control" id="rpwd"
+<<<<<<< HEAD
                     name="password_confirmation" placeholder="Re-enter Password" required>
+=======
+                    name="password_confirmation" placeholder="Re-enter Password"
+                    required value="{{ old('password_confirmation') }}">
+>>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
         		</div>
         	</div>
         </div>
