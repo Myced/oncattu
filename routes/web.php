@@ -34,20 +34,23 @@ Route::group(['prefix' => 'library'], function(){
     //group for college books
     Route::group(['prefix' => 'college'], function(){
         Route::get('/', 'CollegeLibraryController@index')->name('college.library');
+        Route::get('/{slug}', 'CollegeLibraryController@view')->name('college.library.book');
 
     });
 
     //university books
     Route::group(['prefix' => 'university'], function(){
         Route::get('/', 'UniversityLibraryController@index')->name('university.library');
-        Route::get('/{id}', 'UniversityLibraryController@view')->name('university.library.book');
+        Route::get('/{slug}', 'UniversityLibraryController@view')->name('university.library.book');
+        Route::get('/{slug}/buy', 'UniversityLibraryController@buy')->name('university.library.book.buy');
     });
 });
 
 Route::group(['prefix' => 'tutor'], function(){
     Route::get('/', 'TutorController@index')->name('tutor.index');
-    Route::get('/upload/book', 'TutorUploadController@createBook')->name('book.upload');
-    Route::post('/upload/book/store', 'TutorUploadController@storeBook')->name('book.store');
+    Route::get('/upload/book', 'TutorBookUploadController@createBook')->name('book.upload');
+    Route::post('/upload/book/store', 'TutorBookUploadController@storeBook')->name('book.store');
+});
 
 Route::group(['prefix' => 'tuts', 'middleware' => 'auth'], function(){
     Route::get('/', 'TutsController@index')->name('tuts.index');

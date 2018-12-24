@@ -69,82 +69,92 @@
                 </div>
             </div>
 
-            <!-- Tutorials sections -->
-            <br><br>
-            <div class="row">
-                <a href="{{ route('university.library') }}">
-                    <i class="fa fa-chevron-left"></i>
-                    Back to Books
-                </a>
-            </div>
-            <br>
-            <div class="row ">
-                <div class="col-sm-6 text-center">
-                    <a href="{{ route('university.library.book', ['id' => '1']) }}">
-                        <div class="thumbnail">
-                            <img src="../../images/math_image.jpeg" alt="Paris" width="400" height="300">
-                            <a href="{{ route('university.library.book', ['id' => '1']) }}" id="tutorial">ACC 201 Principle of Accounting</a><br>
-                            <a href="{{ route('university.library.book', ['id' => '1']) }}" id="tutor">By Mr. Asen Jevis</a><br>
-                        </div>
+        </div>
+
+        <!-- //row for book details  -->
+
+        <div class="row">
+            <div class="col-sm-8">
+                <!-- Tutorials sections -->
+                <br><br>
+                <div class="row">
+                    <a href="{{ route('university.library') }}">
+                        <i class="fa fa-chevron-left"></i>
+                        Back to Books
                     </a>
                 </div>
+                <br>
+                <div class="row ">
+                    <div class="col-sm-6 text-center">
+                        <a href="#">
+                            <div class="thumbnail">
+                                <img src="/{{ $book->thumbnail }}" alt="Paris" width="400" height="300">
+                                <a href="#" id="tutorial"> {{ $book->title }} </a><br>
+                                <a href="#" id="tutor">By {{ $book->author }} </a><br>
+                            </div>
+                        </a>
+                    </div>
 
-                <div class="col-md-6">
-                    <h3>Book Description</h3>
+                    <div class="col-md-6">
+                        <h3>Book Description</h3>
 
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident,
-                        sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                        <p>
+                            {{ $book->description }}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-4">
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Book Title</th>
+                        <th>Author</th>
+                        <th>Edition</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Accounting</td>
+                        <td> {{ $book->title }} </td>
+                        <td> {{ $book->author }} </td>
+                        <td> {{ $book->edition }} Edition</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="subfee">
+                    <h2>Subscription Fee</h2>
+                    <span> {{ number_format($book->price) }} FCFA</span>
+                </div>
+                <div class="paymentoption">
+                    <h3>Select Payment option</h3>
+                    <form class="" action="{{ route('university.library.book.buy', ['slug' => $book->slug]) }}" method="get">
+
+                        <div class="input-group">
+                            <label class="radio-inline">
+                                <input type="radio" name="method" value="MOMO" checked>MTN MoMo
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="method" value="ORANGE">Orange Money
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="method" value="AFRIC">Africpay
+                            </label>
+                        </div>
+                        <button class="btn btn-primary btn-lg" type="submit">
+                            PAY
+                        </button>
+                    </form>
                 </div>
             </div>
 
         </div>
 
-        <div class="col-sm-4">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Program</th>
-                    <th>Book Title</th>
-                    <th>Author</th>
-                    <th>Edition</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Accounting</td>
-                    <td>Principles of accounting</td>
-                    <td>Ambe Moses</td>
-                    <td>3rd Edition</td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="subfee">
-                <h2>Subscription Fee</h2>
-                <span>499FCFA</span>
-            </div>
-            <div class="paymentoption">
-                <h3>Select Payment option</h3>
-                <div class="input-group">
-                    <label class="radio-inline">
-                        <input type="radio" name="optradio" checked>MTN MoMo
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="optradio">Orange Money
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="optradio" checked>Africpay
-                    </label>
-                </div>
-                <button class="btn btn-primary btn-lg">PAY</button>
-            </div>
-        </div>
+
     </div>
 </div>
 @endsection

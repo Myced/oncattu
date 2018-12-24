@@ -2,19 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use Illuminate\Http\Request;
 
 class UniversityLibraryController extends Controller
 {
     public function index()
     {
-        return view('library.university.index');
+        //get all university books and send
+        $books = Book::where('type', '=', 'university')->get();
+
+        return view('library.university.index', compact('books'));
     }
 
-    public function view($id)
+    public function view($slug)
     {
         //find the book and pass it along
-        
-        return view('library.university.book');
+        $book = Book::where('slug', '=', $slug)->first();
+
+        return view('library.university.book')->with('book', $book);
+    }
+
+    public function buy($slug)
+    {
+        $book = Book::where('slug', '=', $slug)->first();
+
+
     }
 }
