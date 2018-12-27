@@ -61,9 +61,17 @@ class MyRegisterController extends Controller
         return back();
     }
 
-    public function generateUserId()
+    public function generateUserId($isTutor = false)
     {
-        $constant = "OCT" . date('ym') . 'U';
+        if($isTutor == TRUE)
+        {
+            $letter = "T";
+        }
+        else {
+            $letter = "U";
+        }
+
+        $constant = "OCT" . date('ym') . $letter;
 
         $last_id = User::all()->pluck('id')->last();
 
@@ -99,4 +107,67 @@ class MyRegisterController extends Controller
 
         return $user_id;
     }
+
+    //methods for creating tutor account
+    public function createTutor()
+    {
+        return view('create_tutor');
+    }
+
+    public function storeTutor(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'username' => 'required|string|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'email' => 'required|string|email|max:255|unique:users',
+            'tel1' => 'required|unique:users'
+        ]);
+
+        //once validation is complete, store the user account
+        $user = new User;
+
+        $user_id = $this->generateUserId(true);
+
+        $user->user_id = $user_id;
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->password  = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->location = $request->location;
+        $user->tel1 = $request->tel1;
+        $user->tel2 = $request->tel2;
+        $user->sex = $request->gender;
+
+        //tutor specific configurations
+        $user->type = "tutor";
+        $user->tutor_type = $request->tutor_type;
+        $user->prep_name = $request->prep_name;
+        $user->prep_head = $request->prep_head;
+
+        //upload photo;
+        $photoObject = $request->profile;
+
+        if(!empty($photoObject))
+        {
+            //generate a name for it;
+            $photoName = time() . $photoObject->getClientOriginalName();
+
+            $destination = 'uploads/users/avatars/';
+
+            $photoObject->move($destination, $photoName);
+
+            $user->avatar = $destination . $photoName;
+        }
+        else {
+            $user->avatar = SELF::DEFAULT_AVATAR;
+        }
+
+        $user->save();
+
+        session()->flash('success', 'Tutor Account Created');
+
+        return back();
+    }
+
 }

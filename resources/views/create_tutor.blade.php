@@ -56,7 +56,7 @@
 
 <div class="container container-page margin20">
     <form class="form-horizontal text-center" action="{{ route('tutor.store') }}"
-    enctype="multipart/form-data" method="post">
+    	enctype="multipart/form-data" method="post">
 
     @csrf
 
@@ -66,7 +66,7 @@
         	<div class="form-group">
         		<div class="col-sm-12">
         		<input type="text" class="form-control" name="name" placeholder="Enter Names *"
-                    required>
+                    required value="{{ old('name') }}">
         		</div>
         	</div>
         	<div class="form-inline">
@@ -82,24 +82,27 @@
           </div>
           <div class="form-group">
         		<div class="col-sm-12">
-        		<input type="text" class="form-control"  name="location" placeholder="Location">
+        		<input type="text" class="form-control"  name="location"
+				placeholder="Location" value="{{ old('location') }}">
         		</div>
         	</div>
           <div class="form-group">
         		<div class="col-sm-12">
-        		<input type="text" class="form-control"  name="tel1" placeholder="1st contact *"
-                    required>
+        		<input type="text" class="form-control"  name="tel1"
+					placeholder="1st contact *"
+                    required value="{{ old('tel1') }}">
         		</div>
         	</div>
           <div class="form-group">
         		<div class="col-sm-12">
-        		<input type="text" class="form-control" name="tel2" placeholder="2nd contact">
+        		<input type="text" class="form-control" name="tel2"
+					placeholder="2nd contact" value="{{ old('tel2') }}">
         		</div>
         	</div>
           <div class="form-group">
         		<div class="col-sm-12">
-        		<input type="email" class="form-control" name="email" placeholder="E-mail *"
-                required>
+        		<input type="email" class="form-control" name="email"
+					placeholder="E-mail *" value="{{ old('email') }}" required>
         		</div>
         	</div>
         </div>
@@ -149,28 +152,28 @@
                 <br>
         		<div class="radio">
         			<label>
-                        <input type="radio" name="tutor_type" value="campus" checked>
+                        <input type="radio" name="tutor_type" value="CAMPUS" checked>
                         Campus Tutor
                     </label>
         		</div>
 
                 <div class="radio">
         			<label>
-                        <input type="radio" name="tutor_type" value="private" >
+                        <input type="radio" name="tutor_type" value="PRIVATE" >
                         Private Tutor
                     </label>
         		</div>
 
                 <div class="radio">
         			<label>
-                        <input type="radio" name="tutor_type" value="home" >
+                        <input type="radio" name="tutor_type" value="HOME" >
                         Home Tutor
                     </label>
         		</div>
 
                 <div class="radio">
         			<label>
-                        <input type="radio" name="tutor_type" value="prep">
+                        <input type="radio" name="tutor_type" value="PREP">
                         Prep Tutor
                     </label>
         		</div>

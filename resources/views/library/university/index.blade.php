@@ -72,24 +72,24 @@
 
             <!-- Tutorials sections -->
                 <div class="row text-center">
-                    <div class="col-sm-4">
-                        <a href="{{ route('university.library.book', ['id' => '1']) }}">
-                            <div class="thumbnail">
-                                <img src="../images/math_image.jpeg" alt="Paris" width="400" height="300">
-                                <a href="{{ route('university.library.book', ['id' => '1']) }}" id="tutorial">ACC 201 Principle of Accounting</a><br>
-                                <a href="{{ route('university.library.book', ['id' => '1']) }}" id="tutor">By Mr. Asen Jevis</a><br>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4">
-                        <a href="{{ route('university.library.book', ['id' => '1']) }}">
-                            <div class="thumbnail">
-                                <img src="../images/management.jpg" alt="Paris" width="400" height="300">
-                                <a href="#" id="tutorial">ACC 201 Principle of Accounting</a><br>
-                                <a href="#" id="tutor">By Mr. Asen Jevis</a><br>
-                            </div>
-                        </a>
-                    </div>
+                    @foreach($books as $book)
+                        <div class="col-sm-4">
+                            <a href="{{ route('university.library.book', ['slug' => $book->slug]) }}">
+                                <div class="thumbnail">
+                                    <img src="/{{ $book->thumbnail }}" alt="{{ $book->title }} - Image"
+                                        width="100%" height="150">
+                                    <a href="{{ route('university.library.book', ['slug' => $book->slug]) }}">
+                                        {{ $book->title }}
+                                    </a>
+                                    <br>
+                                    <a href="{{ route('university.library.book', ['slug' => $book->slug]) }}">
+                                        By {{ $book->author }}
+                                    </a>
+                                    <br>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
 
         </div>

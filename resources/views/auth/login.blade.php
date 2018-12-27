@@ -91,19 +91,13 @@
 				<div class="form-inline text-center">
 					<div class="col-sm-12">
 						<div class="checkbox">
-<<<<<<< HEAD
-							<label><input class="" type="radio" name="role" id="role1" value="Student">Student</label>
-						</div> &nbsp;&nbsp;&nbsp;&nbsp;
-						<div class="radio">
-							<label><input type="radio" class="" name="role" id="role" value="Tutor">Tutor</label>
-=======
+
 							<label><input class="" type="radio" name="role" id="role1"
 								value="Student" required>Student</label>
 						</div> &nbsp;&nbsp;&nbsp;&nbsp;
 						<div class="radio">
 							<label><input type="radio" class="" name="role" id="role"
 								value="Tutor" required>Tutor</label>
->>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
 						</div>
 					</div>
 				</div>

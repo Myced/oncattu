@@ -13,10 +13,7 @@
 
         <!-- Include styles  -->
         @include('includes.style')
-<<<<<<< HEAD
-=======
         @yield('styles')
->>>>>>> dee027b4a572d9e315e44e7a9d348b572324db49
 
     </head>
     <body>
