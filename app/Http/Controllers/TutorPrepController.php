@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TutorController extends Controller
+class TutorPrepController extends Controller
 {
     public function index()
     {
-        return view('tutor.index');
+        return view('tutor.prep_index');
     }
 }

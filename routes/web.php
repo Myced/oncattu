@@ -49,6 +49,18 @@ Route::group(['prefix' => 'tutor'], function(){
     Route::get('/upload/book', 'TutorUploadController@createBook')->name('book.upload');
     Route::post('/upload/book/store', 'TutorUploadController@storeBook')->name('book.store');
 
+    Route::group(['prefix' => 'tut'], function(){
+        Route::get('/', 'TutorTutController@index')->name('tutor.tuts.index');
+        Route::get('/create', 'TutorTutController@create')->name('tutor.tuts.create');
+        Route::post('/store', 'TutorTutController@store')->name('tutor.tuts.store');
+        Route::get('/{code}', 'TutorTutController@view')->name('tutor.tut.detail');
+    });
+
+    Route::group(['prefix' => 'prep'], function(){
+        Route::get('/', 'TutorPrepController@index')->name('tutor.prep.index');
+    });
+});
+
 Route::group(['prefix' => 'tuts', 'middleware' => 'auth'], function(){
     Route::get('/', 'TutsController@index')->name('tuts.index');
     Route::get('/search', 'TutsController@search')->name('tuts.search');
