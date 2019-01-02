@@ -77,7 +77,7 @@
                 all programs offer. This gives practical tutorial
                 trainings in all courses offer by the university
             </h4>
-            <a href="/oncatu/oncatu-tuts/" class="btn btn-lg btn-primary" role="button">Join us</a>
+            <a href="{{ route('tuts.index') }}" class="btn btn-lg btn-primary" role="button">Join us</a>
         </div>
         <div class="col-sm-3">
             <h3 class="textColorPrimary">Oncatu - DTBL</h3><br>
@@ -87,7 +87,7 @@
     secondary, high schools and university level
     at editions
             </h4>
-            <a href="/oncatu/oncatu-lib/" class="btn btn-lg btn-primary" role="button">Join us</a>
+            <a href="{{ route('library.index') }}" class="btn btn-lg btn-primary" role="button">Join us</a>
         </div>
         <div class="col-sm-3">
             <h3 class="textColorPrimary">Oncatu Skills</h3><br>
@@ -105,7 +105,7 @@
     Clerks, Police,Foresty, SRN, CUSS and many
     more...
             </h4>
-            <a href="/oncatu/oncatu-preps/" class="btn btn-lg btn-primary" role="button">Join us</a>
+            <a href="{{ route('prep.index') }}" class="btn btn-lg btn-primary" role="button">Join us</a>
         </div>
       </div>
     </div>

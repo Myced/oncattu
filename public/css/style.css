@@ -18,9 +18,18 @@ body {
     margin-bottom:0;
     padding: 70px 50px;
 }
-  .textColorPrimary{
-      color: #f4511e;
-  }
+
+.textColorPrimary{
+  color: #f4511e;
+}
+
+.text-black{
+    color: #000;
+}
+
+.text-dark{
+    color: #000;
+}
 
   h2 {
       font-size: 24px;
@@ -566,4 +575,30 @@ label
 .input-group-sm + .form-control-feedback.fa,
 .form-group-sm .form-control + .form-control-feedback.fa {
   line-height: 30px;
+}
+
+.btn-flat{
+    border-radius: 0px;
+}
+
+.prep-title
+{
+    font-size: 1.2em;
+}
+
+.prep-name
+{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.book-link
+{
+    transition: 1s;
+}
+
+.book-link:hover, .book-link:focus
+{
+    font-size: 1.4em;
+    text-decoration: none;
 }

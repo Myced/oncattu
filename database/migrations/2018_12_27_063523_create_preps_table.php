@@ -23,7 +23,7 @@ class CreatePrepsTable extends Migration
             $table->string('price');
             $table->string('thumbnail');
             $table->text('description');
-            $table->string('program')->nullable();
+            $table->string('fascilitator')->nullable();
             $table->string('status')->default('PENDING');
             $table->timestamps();
         });

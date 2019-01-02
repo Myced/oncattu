@@ -105,7 +105,11 @@
 				<div class="form-group text-center">
 						<button	 type="submit" class="btn btn-primary btn-lg" name="login">Log in</button>
 				</div>
+
 				<a href="{{ route('register') }}" class="textWhite18">If you don't have an account: sign-up here</a><br>
+
+				<a href="{{ route('tutor.create') }}" class="textWhite18"> Or Create Tutor Account</a><br>
+
 				<a  class="textWhite18" href="{{ route('password.request') }}">
                     If you have forgotten your password
                 </a>

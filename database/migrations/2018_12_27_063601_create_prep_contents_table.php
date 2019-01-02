@@ -16,6 +16,7 @@ class CreatePrepContentsTable extends Migration
         Schema::create('prep_contents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('prep_id');
+            $table->string('name');
             $table->string('title');
             $table->string('pdf')->nullable();
             $table->string('ppt')->nullable();

@@ -10,6 +10,12 @@ class TutorBookUploadController extends Controller
     const thumbnailPath = 'uploads/books/thumbnails/';
     const pdfPath = 'uploads/books/files/';
 
+    public function index()
+    {
+        $books = Book::all();
+        return view('tutor.book_index', compact('books'));
+    }
+
     public function createBook()
     {
         return view('tutor.upload_book');

@@ -13,7 +13,13 @@ class TutorTutController extends Controller
 
     public function index()
     {
-        return view('tutor.tut_index');
+        $tuts = Tutorial::where('teacher_id', '=', $this->getUser()->id)->get();
+        return view('tutor.tut_index', compact('tuts'));
+    }
+
+    private function getUser()
+    {
+        return auth()->user();
     }
 
     public function create()
@@ -32,7 +38,10 @@ class TutorTutController extends Controller
         $tut->teacher_id = $tutor = $this->getTutorID();
         $tut->area = $request->area;
         $tut->program = $request->program;
-        $tut->price = Functions::getMoney('4.000');
+        $tut->semester = $request->semester;
+        $tut->level = $request->level;
+        $tut->campus = $request->campus;
+        $tut->price = Functions::getMoney($request->price);
         $tut->description = $request->description;
 
         //upload the image
@@ -124,15 +133,48 @@ class TutorTutController extends Controller
             return auth()->user()->id;
         }
         else {
-            return '101';
+            return '-101';
         }
 
     }
 
     public function view($code)
     {
-        $tutorial = Tutorial::where('code', '=', $code)->first();
+        $tut = Tutorial::where('code', '=', $code)->first();
 
-        return view('tutor.tut_detail', compact('tutorial'));
+        return view('tutor.tut_detail', compact('tut'));
+    }
+
+    public function publish($code)
+    {
+        $tut = $this->getTut($code);
+
+        $tut->status = "PUBLISHED";
+
+        $tut->save();
+
+        //flash sesstion
+        session()->flash('success', 'Your tutorial has been published');
+
+        return back();
+    }
+
+    public function down($code)
+    {
+        $tut = $this->getTut($code);
+
+        $tut->status = "PENDING";
+
+        $tut->save();
+
+        //flash sesstion
+        session()->flash('success', 'Tutorial has been taken down');
+
+        return back();
+    }
+
+    private function getTut($code)
+    {
+        return Tutorial::where('code', '=', $code)->first();
     }
 }

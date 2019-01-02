@@ -55,6 +55,17 @@
                   	</div>
 
                     <div class="form-group">
+                        <label for="" class="col-sm-4">
+                            Campus:
+                            <span class="required">*</span>
+                        </label>
+                  		<div class="col-sm-8">
+                  		<input type="text" class="form-control"  name="campus"
+                            placeholder="Campus" required>
+                  		</div>
+                  	</div>
+
+                    <div class="form-group">
                         <label for="" class="col-sm-4 ">
                             Tutorial Image:
                             <span class="required">*</span>
@@ -72,6 +83,29 @@
 
                 <!-- //next column -->
                 <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-4">
+                            Semester:
+                            <span class="required">*</span>
+                        </label>
+                  		<div class="col-sm-8">
+                  		<input type="text" class="form-control"  name="semester"
+                            placeholder="Semester" required>
+                  		</div>
+                  	</div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-4">
+                            Level:
+                            <span class="required">*</span>
+                        </label>
+                  		<div class="col-sm-8">
+                  		<input type="text" class="form-control"  name="level"
+                            placeholder="Level" required>
+                  		</div>
+                  	</div>
+
                     <div class="form-group">
                         <label for="" class="col-sm-4">
                             Price:

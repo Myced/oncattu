@@ -24,6 +24,9 @@ class CreateTutorialsTable extends Migration
             $table->string('thumbnail');
             $table->text('description');
             $table->string('program')->nullable();
+            $table->string('campus')->nullable();
+            $table->string('semester')->nullable();
+            $table->string('level')->nullable();
             $table->string('status')->default('PENDING');
             $table->timestamps();
         });

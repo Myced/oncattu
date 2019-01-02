@@ -2,13 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Tutorial;
 use Illuminate\Http\Request;
 
 class TutsController extends Controller
 {
     public function index()
     {
-        return view('tuts.index');
+        $tuts = $this->getTutorials();
+
+        return view('tuts.index', compact('tuts'));
+    }
+
+    public function getTutorials()
+    {
+        $tutorials = Tutorial::where('status', '=', 'PUBLISHED')
+                                ->paginate();
+
+        return $tutorials;
     }
 
     public function search(Request $request)

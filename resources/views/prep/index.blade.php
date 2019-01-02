@@ -24,26 +24,12 @@
 
                 <label for="searchtext">Search for tutorials: </label>
                 <div class="input-group">
-                    <input name="text" value="" class="form-control" placeholder="Search..." type="text">
+                    <input name="keyword" value="" class="form-control" placeholder="Search preps..." type="text">
                     <span class="input-group-btn">
                         <button class="btn btn-primary" type="submit" id="addressSearch">
                             <span class="fas fa-search"></span>
                         </button>
                     </span>
-                </div>
-                <div class="input-group">
-                    <label class="radio-inline">
-                        <input type="radio" name="opt" checked value="campus">By Campus
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="opt" value="program">By Program
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="opt" value="level">By Level
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="opt" value="tutor">By Tutor
-                    </label>
                 </div>
             </form>
         </div>
@@ -53,39 +39,35 @@
 <!-- Tutorials sections -->
 <br>
 <div class="container text-center">
+    @if(count($preps) == 0)
     <div class="row text-center">
-        <div class="col-sm-4">
-            <a href="#">
-                <div class="thumbnail">
-                    <img src="../images/math_image.jpeg" alt="Paris" width="400" height="300">
-                    <strong>Mathematics</strong><br>
-                    ACC 201 Principle of Accounting<br>
-                    By Mr. Asen Jevis<br>
-                </div>
-            </a>
+        <div class="col-sm-12">
+            <br>
+            <h2 class="textColorPrimary">No Preps at this time</h2>
+            <br><br>
         </div>
 
-        <div class="col-sm-4">
-            <a href="#">
-                <div class="thumbnail">
-                    <img src="../images/math_image.jpeg" alt="Paris" width="400" height="300">
-                    <strong>Mathematics</strong><br>
-                    ACC 201 Principle of Accounting<br>
-                    By Mr. Asen Jevis<br>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-sm-4">
-            <a href="#">
-                <div class="thumbnail">
-                    <img src="../images/math_image.jpeg" alt="Paris" width="400" height="300">
-                    <strong>Mathematics</strong><br>
-                    ACC 201 Principle of Accounting<br>
-                    By Mr. Asen Jevis<br>
-                </div>
-            </a>
-        </div>
     </div>
+    @else
+    <div class="row text-center">
+
+        @foreach($preps as $prep)
+            <div class="col-sm-4">
+                <a href="#">
+                    <div class="thumbnail">
+                        <img src="/{{ $prep->thumbnail }}" alt="Paris" width="400" height="300">
+                        <strong class="prep-title textColorPrimary">{{ $prep->area }}</strong>
+                        <br>
+                         <span class="prep-name textColorPrimary"> {{ $prep->name }} </span>
+                        <br>
+                        By {{ $prep->fascilitator }}
+                        <br>
+                    </div>
+                </a>
+            </div>
+        @endforeach
+
+    </div>
+    @endif
 </div>
 @endsection

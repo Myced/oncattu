@@ -1,5 +1,10 @@
 @extends('layouts.oncattu')
 
+@section('styles')
+    <link rel="stylesheet" href="/plugins/videojs/video-js.min.css">
+    <link rel="stylesheet" href="/plugins/videojs/theme.css">
+@endsection
+
 @section('content')
 <div class="container container-page">
         <ul class="secondary-navbar pull-right">
@@ -19,10 +24,20 @@
 
                 <h4 class="text-center">Tutorial Content</h3>
                 <ul class="list-group " id="course-list">
-                    <button type="button" class="list-group-item" onclick="playVideo('../videos/video.mp4')">Consiel Constitutionel</button>
-                    <button type="button" class="list-group-item" onclick="playVideo('../videos/survivors.mp4')">Survivor</button>
-                    <button type="button" class="list-group-item" onclick="playVideo('../videos/vid.mp4')">Mass Burial</button>
-                    <button type="button" class="list-group-item" onclick="playVideo('../videos/vide')">Say you won't let go</button>
+                    <button type="button" class="list-group-item"
+                        onclick="playVideo('../videos/video.mp4')">
+                        Chapter 1
+                        <span class="pull-right"> <i class="fa fa-check text-success"></i> </span>
+                    </button>
+
+                    <button type="button" class="list-group-item active"
+                        onclick="playVideo('../videos/survivors.mp4')">Chapter 2</button>
+
+                    <button type="button" class="list-group-item"
+                        onclick="playVideo('../videos/vid.mp4')">Chapter 3</button>
+
+                    <button type="button" class="list-group-item"
+                        onclick="playVideo('../videos/vide')">Chapter 4</button>
                 </ul>
 
                 <ul class="list-group">
@@ -41,9 +56,13 @@
             <div class="col-sm-6">
                 <h4 id="course-title" class=" text-center">UB, Accounting Level 200 Tutorial</h3>
                 <div class="board thumbnail">
-                    <video oncontextmenu="return false;" class="img-responsive" width="100%" controls>
+                    <!-- <video oncontextmenu="return false;" class="video-js" width="100%" controls>
                         <source src="/uploads/tuts/videos/video.mp4">
 
+                    </video> -->
+                    <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="540" height="264" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+                      <source src="/uploads/tuts/videos/video.mp4" type="video/mp4">
+                      <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                     </video>
                     <div class="resources">
                         <a href="#" class="pull-left">Answer to exercises</a>
@@ -56,7 +75,7 @@
                     <br>
                     <div class="progress">
                         <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-                        aria-valuenow="0" aria-valuemin="1" aria-valuemax="100" style="width:1%">
+                        aria-valuenow="0" aria-valuemin="1" aria-valuemax="100" style="width:10%">
                             1% Complete
                         </div>
                     </div>
@@ -86,4 +105,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" src="/plugins/videojs/video.min.js"></script>
 @endsection

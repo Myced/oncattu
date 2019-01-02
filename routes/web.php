@@ -18,7 +18,6 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 
 
 //route for tutorials section
-
 Route::group(['prefix' => 'tuts'], function(){
     Route::get('/', 'TutsController@index')->name('tuts.index');
     Route::get('/search', 'TutsController@search')->name('tuts.search');
@@ -46,7 +45,7 @@ Route::group(['prefix' => 'library'], function(){
     });
 });
 
-Route::group(['prefix' => 'tutor'], function(){
+Route::group(['prefix' => 'tutor', 'middleware' => 'auth'], function(){
     Route::get('/', 'TutorController@index')->name('tutor.index');
     Route::get('/upload/book', 'TutorBookUploadController@createBook')->name('book.upload');
     Route::post('/upload/book/store', 'TutorBookUploadController@storeBook')->name('book.store');
@@ -56,10 +55,25 @@ Route::group(['prefix' => 'tutor'], function(){
         Route::get('/create', 'TutorTutController@create')->name('tutor.tuts.create');
         Route::post('/store', 'TutorTutController@store')->name('tutor.tuts.store');
         Route::get('/{code}', 'TutorTutController@view')->name('tutor.tut.detail');
+        Route::get('/{code}/publish', 'TutorTutController@publish')->name('tutor.tut.publish');
+        Route::get('/{code}/down', 'TutorTutController@down')->name('tutor.tut.down');
+        Route::post('/{code}/store', 'TutorTutContentController@store')->name('tutor.tut.content.store');
     });
 
     Route::group(['prefix' => 'prep'], function(){
         Route::get('/', 'TutorPrepController@index')->name('tutor.prep.index');
+        Route::get('/create', 'TutorPrepController@create')->name('tutor.prep.create');
+        Route::post('/store', 'TutorPrepController@store')->name('tutor.prep.store');
+        Route::get('/{code}', 'TutorPrepController@view')->name('tutor.prep.detail');
+        Route::get('/{code}/publish', 'TutorPrepController@publish')->name('tutor.prep.publish');
+        Route::get('/{code}/down', 'TutorPrepController@down')->name('tutor.prep.down');
+        Route::post('/{code}/store', 'TutorPrepContentController@store')->name('tutor.prep.content.store');
+    });
+
+    Route::group(['prefix' => 'books'], function(){
+        Route::get('/', 'TutorBookUploadController@index')->name('tutor.books.index');
+        Route::get('/upload', 'TutorBookUploadController@createBook')->name('tutor.book.upload');
+        Route::post('/upload/store', 'TutorBookUploadController@storeBook')->name('tutor.book.store');
     });
 });
 

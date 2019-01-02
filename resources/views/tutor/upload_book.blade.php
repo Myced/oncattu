@@ -1,13 +1,14 @@
-@extends('layouts.oncattu')
+@extends('layouts.tutor')
+
+@section('title')
+	{{ __("Upload Book") }}
+@endsection
 
 @section('styles')
 <link rel="stylesheet" href="/css/AdminLTE.css">
 @endsection
 
 @section('content')
-<div class="jumbotron page-jumbo bg-primary">
-	<h2>Oncatu > Tutor > Upload Book </h2>
-</div>
 
 @if(session('success'))
 <br>
@@ -75,7 +76,7 @@
 @endif
 
 <br>
-<form class="form-horizontal" action="{{ route('book.store') }}"
+<form class="form-horizontal" action="{{ route('tutor.book.store') }}"
     method="post" enctype="multipart/form-data">
 
     @csrf
