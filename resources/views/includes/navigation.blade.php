@@ -14,7 +14,7 @@
       <ul class="nav page navbar-nav navbar-right">
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('tuts.index') }}">Tutorials</a></li>
-            <li><a href="{{ route('prep.index') }}">Preps</a></li>
+            <li><a href="{{ route('preps.index') }}">Preps</a></li>
             <li><a href="{{ route('library.index') }}">Books</a></li>
             <li><a href="{{ route('tutor.index') }}">Tutor</a></li>
             <li><a class="active" href="/oncatu/about-us">About us</a></li>

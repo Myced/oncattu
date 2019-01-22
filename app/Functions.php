@@ -20,6 +20,11 @@ class Functions
 
         return $filter;
     }
+
+    public static function getUser()
+    {
+        return auth()->user();
+    }
 }
 
 

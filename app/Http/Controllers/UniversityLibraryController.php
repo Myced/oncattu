@@ -27,6 +27,14 @@ class UniversityLibraryController extends Controller
     {
         $book = Book::where('slug', '=', $slug)->first();
 
+    }
 
+    public function momoBuy($slug)
+    {
+        $book = Book::where('slug', '=', $slug)->first();
+        $user = auth()->user();
+
+
+        return view('library.university.book_momo', compact('book', 'user'));
     }
 }

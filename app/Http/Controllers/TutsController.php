@@ -27,8 +27,40 @@ class TutsController extends Controller
         dd($request);
     }
 
+    private function getTutorialFromSlug($slug)
+    {
+        return Tutorial::where('slug', '=', $slug)->first();
+    }
+
     public function mytuts()
     {
         return view('tuts.mytuts');
+    }
+
+    public function view($slug)
+    {
+        $tutorial = $this->getTutorialFromSlug($slug);
+        
+        return view("tuts.tut_details", compact('tutorial'));
+    }
+
+    public function enroll($slug)
+    {
+        $tutorial = $this->getTutorialFromSlug($slug);
+        
+        return view("tuts.tut_enrol", compact('tutorial'));
+    }
+
+    public function enrollMtn($slug)
+    {
+        $tutorial = $this->getTutorialFromSlug($slug);
+        $user = $this->getUser();
+
+        return view('tuts.tut_payment_mtn', compact('tutorial', 'user'));
+    }
+
+    private function getUser()
+    {
+        return auth()->user();
     }
 }

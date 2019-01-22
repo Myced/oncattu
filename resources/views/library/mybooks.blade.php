@@ -1,68 +1,157 @@
-@extends('layouts.oncattu')
+@extends('layouts.site')
 
 @section('content')
-<div class="container container-page">
-        <ul class="secondary-navbar pull-right">
-            <li><a href="/oncatu/oncatu-lib/">Find Books</a></li>
-            <li><a class="active" href="/oncatu/oncatu-lib/dashboard">My Books</a></li>
-            <li><a href="/oncatu/tutor">Instructor</a></li>
-            <a href="#profile"><img src="../images/profile_image.jpg" class="img-circle" height="50" alt="My profile"></a>
-        </ul>
-    </div>
-<div class="jumbotron page-jumbo bg-primary">
-        <h2>Dashboard > My Books</h2>
-</div>
 
-<div class="container container-padding bg-grey">
-    <div class="row">
-        <div class="col-sm-4 user-info">
-            <p>Name: <span class="user-value"><u>Mangi Elijah Nchimehnyi</u></span></p>
-            <p>Gender: <span class="user-value"><u>Male</span></u></p>
-            <p>Location: <span class="user-value"><u>Dirty South Buea</u></span></p>
+    <main class="main">
+        <!-- Page Title -->
+        <div class="page-title text-center">
+            <h2 class="title"> My Books </h2>
+            <p class="description light"> 
+                List of all your Books
+            </p>
+        </div>
+        <!-- Page Title -->
+
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <span class="parent"> <i class="fa fa-home"></i> <a href="/"> Home </a> </span>
+                <i class="fa fa-chevron-right"></i>
+                <span class="child"> Library </span>
+
+                <i class="fa fa-chevron-right"></i>
+
+                <span class="child"> My Books </span>
+            </div>
         </div>
 
-        <div class="col-sm-4 user-info">
-            <p>Contact: <span class="user-value"><u>+237 672 084 140</u></span></p>
-            <p>Email: <span class="user-value"><u>mangielijah8@gmail.com</span></u></p>
-            <p>Library No: <span class="user-value"><u>22392</u></span></p>-->
-        </div>
 
-        <div class="col-sm-4">
-            <img src="../images/profile_image.jpg" alt="profile image" height="240" class="img-circle">
-        </div>
-    </div>
-</div>
+        <div class="container container-padding bg-grey">
+            <br><br>
+            <div class="row text-center">
+                <div class="col-sm-4 user-info">
+                    <p class="text-dark">
+                        Name: 
+                        <span class="user-value"> {{ auth()->user()->name }}</span>
+                    </p>
 
-<div class="container">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Book Title</th>
-        <th>Author</th>
-        <th>Edition</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Hibmat Level 100 Management</td>
-        <td>Mayong Egbe</td>
-        <td>3rd</td>
-        <td><a href="{{ route('book.read', ['book' => '2']) }}" class="btn btn-primary">Read</a></td>
-      </tr>
-      <tr>
-        <td>Hibmat Level 100 Management</td>
-        <td>Mayong Egbe</td>
-        <td>3rd</td>
-        <td><a href="/oncatu/oncatu-lib/board" class="btn btn-primary">Read</a></td>
-      </tr>
-      <tr>
-        <td>Hibmat Level 100 Management</td>
-        <td>Mayong Egbe</td>
-        <td>3rd</td>
-        <td><a href="/oncatu/oncatu-lib/board" class="btn btn-primary">Read</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+                    <p class="text-dark">
+                        Gender: 
+                        <span class="user-value">
+
+                        @if(auth()->user()->sex == 'M')
+                            {{ __('Male') }}
+                        @else
+                            {{ __('Female') }}
+                        @endif
+                        </span>
+                    </p>
+
+                    <p class="text-dark">
+                        Location: 
+                        <span class="user-value">
+                        {{ auth()->user()->location }}
+                    
+                        </span>
+                    </p>
+                </div>
+
+                <div class="col-sm-4 user-info">
+                    <p class="text-dark">Contact:
+                        <span class="user-value">
+                                {{ auth()->user()->tel1 }}
+
+                                @if(auth()->user()->tel2 != '' || auth()->user()->tel2 != null )
+                                    {{ __(' / ') }}
+                                    {{ auth()->user()->tel2 }}
+                                @endif
+                            
+                        </span>
+                    </p>
+
+                    <p class="text-dark">
+                        Email:
+                        <span class="user-value">
+                            {{ auth()->user()->email }} 
+                        </span>
+                    </p>
+
+
+                    <!--<p>Location: <span class="user-v</span>alue"><u>Dirty South Buea</u></span></p>-->
+                </div>
+
+                <div class="col-sm-4">
+                    <img src="/{{ auth()->user()->avatar }}" alt="profile image" height="240" class="img-circle">
+                </div>
+            </div>
+
+
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{ route('library.index') }}" class="btn btn-outline-info btn-rounded">
+                        <i class="fa fa-chevron-left"></i>
+                        Books
+                    </a>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-dark f-16">
+                            <tr>
+                                <th>S/N</th>
+                                <th>Book Title</th>
+                                <th>Author</th>
+                                <th>Edition</th>
+                                <th>Action</th>
+                            </tr>
+
+                            @if(count($myBooks) == 0)
+                            <tr>
+                                <th colspan="7" class="text-center">
+                                    <strong class="text-primary">
+                                        You have not bought any books
+                                    </strong>
+                                </th>
+                            </tr>
+                            @else 
+                                <?php $count = 1; ?>
+
+                                @foreach($myBooks as $mybook)
+                                    <tr>
+                                        <td> {{ $count++ }} </td>
+                                        <th>
+                                            {{ $mybook->book()->title }}
+                                        </th>
+
+                                        <td>
+                                            {{ $mybook->book()->author }}
+                                        </td>
+
+                                        <td>
+                                            {{ $mybook->book()->edition }}
+                                        </td>
+
+                                        <td>
+                                            <a href="{{ route('book.read', ['slug' => $mybook->book()->slug]) }}" 
+                                                class="btn btn-color-primary btn-rounded">
+                                                Read Book
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    
 @endsection

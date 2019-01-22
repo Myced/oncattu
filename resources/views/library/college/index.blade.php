@@ -1,149 +1,109 @@
-@extends('layouts.oncattu')
+@extends('layouts.site')
+
+@section('title')
+    {{ __(" - College Books") }}
+@endsection
 
 @section('content')
-<div class="container container-page">
-        <ul class="secondary-navbar pull-right">
-            <li><a class="active" href="/oncatu/oncatu-lib/">Find Books</a></li>
-            <li><a href="/oncatu/oncatu-lib/dashboard">My Books</a></li>
-            <li><a href="/oncatu/tutor">Instructor</a></li>
-            <a href="#profile"><img src="../images/profile_image.jpg" class="img-circle" height="50" alt="My profile"></a>
-        </ul>
-    </div>
 
-<div class="jumbotron page-jumbo bg-primary">
-        <h2>College Library > Subscription</h2>
-</div>
+    <main class="main">
+        <!-- Page Title -->
+        <div class="page-title text-center">
+            <h2 class="title"> College Books </h2>
+            <p class="description light"> 
+            </p>
+        </div>
+        <!-- Page Title -->
 
-
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="" placeholder="School Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="" placeholder="Form">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="" placeholder="Series">
-                    </div>
-                </div>
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <span class="parent"> <i class="fa fa-home"></i> <a href="/"> Home </a> </span>
+                <i class="fa fa-chevron-right"></i>
+                <span class="child"> College Books </span>
             </div>
-            <!-- SEARCH SECTION -->
-            <div id="seach-section">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <form action="#" autocomplete="off" class="form-horizontal" method="post" accept-charset="utf-8">
+        </div>
 
-                            <label for="searchtext">Search for Book: </label>
-                            <div class="input-group">
-                                <input name="searchtext" value="" class="form-control" placeholder="Search..." type="text">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="submit" id="addressSearch">
-                                        <span class="fas fa-search"></span>
-                                    </button>
-                                </span>
+        <div class="container-fluid">
+
+            <div class="row m-t-10">
+                <div class="col-md-8 col-sm-12">
+     
+                    <!-- SEARCH SECTION -->
+                    <div id="seach-section">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form action="#" autocomplete="off" class="form-horizontal" method="post" accept-charset="utf-8">
+
+                                    <label for="searchtext">Search for Book: </label>
+                                    <div class="input-group">
+                                        <input name="searchtext" value="" class="form-control input-search" placeholder="Search..." type="text">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit" id="addressSearch">
+                                                <span class="fa fa-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    
+                                </form>
                             </div>
-                            <div class="input-group">
-                                <label class="radio-inline">
-                                    <input type="radio" name="optradio" checked>By Book Name
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optradio">By Subject
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optradio" checked>By Form
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optradio">By Author
-                                </label>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+                    <!-- end of search area -->
+
                 </div>
+                
             </div>
 
+            <!-- row  -->
             <!-- Tutorials sections -->
-                <div class="row text-center">
-                    <div class="col-sm-4">
-                        <a href="{{ route('college.library.book', ['id' => '1']) }}">
-                            <div class="thumbnail">
-                                <img src="../images/math_image.jpeg" alt="Paris" width="400" height="300">
-                                <a href="{{ route('college.library.book', ['id' => '1']) }}" id="tutorial">ACC 201 Principle of Accounting</a><br>
-                                <a href="{{ route('college.library.book', ['id' => '1']) }}" id="tutor">By Mr. Asen Jevis</a><br>
-                            </div>
-                        </a>
-                    </div>
+            <div class="row  m-t-20 background-gray p-20">
+                @foreach($books as $book)
+                    <div class="col-xs-12 col-sm-6 col-md-4 ">
+                        <div class="feature-box">
+                            <a href="{{ route('college.library.book', ['slug' => $book->slug]) }}">
+                                <div class="row">
+                                    <div class="thumbnail">
+                                        <img src="/{{ $book->thumbnail }}" alt="{{ $book->title }} - Image"
+                                            width="100%" height="150">
+                                        
+                                        <br>
+                                        
+                                        <br>
+                                    </div>
+                                </div>
 
-                    <div class="col-sm-4">
-                        <a href="{{ route('college.library.book', ['id' => '1']) }}">
-                            <div class="thumbnail">
-                                <img src="../images/math_image.jpeg" alt="Paris" width="400" height="300">
-                                <a href="{{ route('college.library.book', ['id' => '1']) }}" id="tutorial">ACC 201 Principle of Accounting</a><br>
-                                <a href="{{ route('college.library.book', ['id' => '1']) }}" id="tutor">By Mr. Asen Jevis</a><br>
-                            </div>
-                        </a>
-                    </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-color-primary sans-serif text-bold">
+                                            {{ $book->title }}
+                                            ({{ $book->edition }} Edition)
+                                        </h3>
+                                    </div>
 
-                    <div class="col-sm-4">
-                        <a href="{{ route('college.library.book', ['id' => '1']) }}">
-                            <div class="thumbnail">
-                                <img src="../images/math_image.jpeg" alt="Paris" width="400" height="300">
-                                <a href="{{ route('college.library.book', ['id' => '1']) }}" id="tutorial">ACC 201 Principle of Accounting</a><br>
-                                <a href="{{ route('college.library.book', ['id' => '1']) }}" id="tutor">By Mr. Asen Jevis</a><br>
-                            </div>
-                        </a>
-                    </div>
+                                    <div class="col-md-12">
+                                        <span class="text-dark f-20">
+                                            By 
+                                            <strong>{{ $book->author }}</strong>
+                                        </span>
+                                    </div>
 
-                    
-                </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary pull-right">
+                                            More
+                                        </button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <!-- end row -->
 
         </div>
+    </main>
 
-        <div class="col-sm-4">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Program</th>
-                    <th>Book Title</th>
-                    <th>Author</th>
-                    <th>Edition</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Accounting</td>
-                    <td>Principles of accounting</td>
-                    <td>Ambe Moses</td>
-                    <td>3rd Edition</td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="subfee">
-                <h2>Subscription Fee</h2>
-                <span>499FCFA</span>
-            </div>
-            <div class="paymentoption">
-                <h3>Select Payment option</h3>
-                <div class="input-group">
-                    <label class="radio-inline">
-                        <input type="radio" name="optradio" checked>MTN MoMo
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="optradio">Orange Money
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="optradio" checked>Africpay
-                    </label>
-                </div>
-                <button class="btn btn-primary btn-lg">PAY</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 @endsection

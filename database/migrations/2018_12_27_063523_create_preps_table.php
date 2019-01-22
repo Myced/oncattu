@@ -24,6 +24,7 @@ class CreatePrepsTable extends Migration
             $table->string('thumbnail');
             $table->text('description');
             $table->string('fascilitator')->nullable();
+            $table->integer('views')->default(1);
             $table->string('status')->default('PENDING');
             $table->timestamps();
         });

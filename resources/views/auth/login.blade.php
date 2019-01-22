@@ -52,11 +52,11 @@
 
             <br>
 
-            @if($errors->has('email') || $errors->has('password'))
+            @if($errors->has('username') || $errors->has('password'))
             <div class="alert alert-danger">
                 <strong>Error</strong>
-                @if($errors->has('email'))
-                    {{ $errors->first('email') }}
+                @if($errors->has('username'))
+                    {{ $errors->first('username') }}
                 @endif
 
                 @if($errors->has('password'))
@@ -76,7 +76,7 @@
                 @csrf
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="text" class="form-control" placeholder="Enter email or username" name="email" size="50" required>
+						<input type="text" class="form-control" placeholder="Enter  username" name="username" size="50" required>
 					</div>
 				</div>
 				<div class="form-group">

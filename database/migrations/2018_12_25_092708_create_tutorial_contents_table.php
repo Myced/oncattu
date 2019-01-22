@@ -21,7 +21,7 @@ class CreateTutorialContentsTable extends Migration
             $table->string('pdf')->nullable();
             $table->string('ppt')->nullable();
             $table->string('video')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

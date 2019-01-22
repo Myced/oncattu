@@ -32,4 +32,31 @@ class PrepController extends Controller
 
     }
 
+    public function view($slug)
+    {
+        $prep = $this->getPrepFromSlug($slug);
+
+        return view("prep.prep_details", compact('prep'));
+    }
+
+    public function enroll($slug)
+    {
+        $prep = $this->getPrepFromSlug($slug);
+
+        return view("prep.prep_enrol", compact('prep'));
+    }
+
+    public function enrollMtn($slug)
+    {
+        $prep = $this->getPrepFromSlug($slug);
+        $user = auth()->user();
+
+        return view('prep.prep_payment_mtn', compact('prep', 'user'));
+    }
+
+    private function getPrepFromSlug($slug)
+    {
+        return Prep::where('slug', '=', $slug)->first();
+    }
+
 }
